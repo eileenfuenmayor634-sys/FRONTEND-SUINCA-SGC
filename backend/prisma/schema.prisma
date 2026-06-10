@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model clientes {
+  id             String         @id @db.VarChar(255)
+  name           String         @db.VarChar(255)
+  rif            String         @unique(map: "rif") @db.VarChar(50)
+  contact_person String?        @db.VarChar(255)
+  email          String?        @db.VarChar(250)
+  phone          String?        @db.VarChar(50)
+  status         String?        @default("active") @db.VarChar(20)
+  created_at     DateTime?      @default(now()) @db.DateTime(0)
+  contenedores   contenedores[]
+}
+
+model contenedores {
+  id                         String                    @id @db.VarChar(255)
+  numero_serie               String                    @unique(map: "numero_serie") @db.VarChar(100)
+  tipo                       String                    @db.VarChar(50)
+  capacidad                  Int
+  estado                     String                    @default("OPERATIVO") @db.VarChar(50)
+  ubicacion                  String?                   @db.VarChar(255)
+  propietario                String?                   @db.VarChar(255)
+  client_id                  String?                   @db.VarChar(255)
+  fecha_ultimo_mantenimiento DateTime?                 @db.DateTime(0)
+  observaciones              String?                   @db.Text
+  created_at                 DateTime?                 @default(now()) @db.DateTime(0)
+  clientes                   clientes?                 @relation(fields: [client_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "contenedores_ibfk_1")
+  hydrostatic_tests          hydrostatic_tests[]
+  mantenimiento_registros    mantenimiento_registros[]
+
+  @@index([client_id], map: "client_id")
+}
+
+model hydrostatic_tests {
+  id                   String       @id @db.VarChar(255)
+  user_id              String       @db.VarChar(255)
+  container_id         String       @db.VarChar(255)
+  test_date            DateTime     @db.DateTime(0)
+  humidity_measurement Decimal?     @db.Decimal(10, 2)
+  pressure             Decimal?     @db.Decimal(10, 2)
+  volume               Decimal?     @db.Decimal(10, 2)
+  test_result          String?      @db.VarChar(100)
+  created_at           DateTime?    @default(now()) @db.DateTime(0)
+  usuarios             usuarios     @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "hydrostatic_tests_ibfk_1")
+  contenedores         contenedores @relation(fields: [container_id], references: [id], onUpdate: Restrict, map: "hydrostatic_tests_ibfk_2")
+
+  @@index([container_id], map: "idx_ht_container")
+  @@index([user_id], map: "user_id")
+}
+
+model mantenimiento_registros {
+  id                String        @id @db.VarChar(255)
+  contenedor_id     String?       @db.VarChar(255)
+  tipo              String?       @db.VarChar(100)
+  descripcion       String?       @db.Text
+  fecha_realizacion DateTime      @db.DateTime(0)
+  costo             Decimal?      @db.Decimal(10, 2)
+  created_at        DateTime?     @default(now()) @db.DateTime(0)
+  contenedores      contenedores? @relation(fields: [contenedor_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "mantenimiento_registros_ibfk_1")
+
+  @@index([contenedor_id], map: "contenedor_id")
+}
+
+model usuarios {
+  id                String              @id @db.VarChar(255)
+  email             String              @unique(map: "email") @db.VarChar(255)
+  password_hash     String              @db.VarChar(255)
+  nombre            String              @db.VarChar(255)
+  rol               String              @default("OPERADOR") @db.VarChar(50)
+  estado            Int                 @default(1) @db.TinyInt
+  created_at        DateTime?           @default(now()) @db.DateTime(0)
+  updated_at        DateTime?           @default(now()) @db.DateTime(0)
+
+  // Password recovery
+  reset_token        String?            @db.VarChar(255)
+  reset_token_expires DateTime?
+
+  hydrostatic_tests hydrostatic_tests[]
+}
+
