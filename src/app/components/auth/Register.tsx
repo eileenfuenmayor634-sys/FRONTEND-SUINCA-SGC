@@ -45,7 +45,6 @@ export function Register({ onBack }: RegisterProps) {
     setIsLoading(true);
 
     try {
-      // Enviamos campos mapeados al backend
       await api.post('/auth/register', {
         nombre: formData.fullName,
         email: formData.email,
@@ -86,27 +85,27 @@ export function Register({ onBack }: RegisterProps) {
         </div>
       </div>
 
-      <div className="w-full max-w-3xl relative z-10 my-20">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 tracking-wide">
+      <div className="w-full max-w-sm relative z-10 my-20">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 tracking-wide">
             SISTEMA DE MANTENIMIENTO INDUSTRIAL
           </h1>
         </div>
 
-        <div className="bg-[#1e2836]/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/10">
-          <div className="flex flex-col items-center mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center mb-4 border border-white/10 shadow-lg">
-              <Settings className="w-12 h-12 text-cyan-400" />
+        <div className="bg-[#1e2836]/80 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-white/10">
+          <div className="flex flex-col items-center mb-6">
+            <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center mb-3 border border-white/10 shadow-lg">
+              <Settings className="w-10 h-10 text-cyan-400" />
             </div>
-            <h2 className="text-2xl font-bold text-white">SGM</h2>
+            <h2 className="text-xl font-bold text-white">SGM</h2>
             <p className="text-cyan-400 text-sm">Industrial</p>
           </div>
 
-          <h3 className="text-white text-center mb-6 font-semibold">REGISTRO DE USUARIO</h3>
+          <h3 className="text-white text-center mb-4 font-semibold">REGISTRO DE USUARIO</h3>
 
           {!isSubmitted ? (
             <>
-              <p className="text-gray-400 text-sm text-center mb-6">
+              <p className="text-gray-400 text-sm text-center mb-4">
                 Complete el formulario para crear su cuenta en el sistema.
               </p>
 
@@ -116,8 +115,16 @@ export function Register({ onBack }: RegisterProps) {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+
+
+
+
+
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
                   <div>
                     <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                       Nombre Completo *
@@ -131,7 +138,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="Juan Pérez"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -149,7 +156,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="correo@empresa.com"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -167,7 +174,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="+1 234 567 8900"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -185,7 +192,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="Nombre de la Empresa"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -203,7 +210,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="Gerente de Mantenimiento"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -221,7 +228,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="usuario123"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -239,7 +246,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="••••••••"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -257,7 +264,7 @@ export function Register({ onBack }: RegisterProps) {
                         onChange={handleChange}
                         placeholder="••••••••"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
@@ -270,7 +277,8 @@ export function Register({ onBack }: RegisterProps) {
                     className="w-4 h-4 mt-1 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-cyan-400 bg-[#0f1419]/50 border-white/10"
                   />
                   <label className="text-sm text-gray-400">
-                    Acepto los <span className="text-cyan-400 hover:text-cyan-300 cursor-pointer">términos y condiciones</span> y la{' '}
+                    Acepto los{' '}
+                    <span className="text-cyan-400 hover:text-cyan-300 cursor-pointer">términos y condiciones</span> y la{' '}
                     <span className="text-cyan-400 hover:text-cyan-300 cursor-pointer">política de privacidad</span> del sistema.
                   </label>
                 </div>
@@ -278,7 +286,7 @@ export function Register({ onBack }: RegisterProps) {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3.5 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
                 >
                   {isLoading ? (
                     <>
@@ -326,7 +334,7 @@ export function Register({ onBack }: RegisterProps) {
           {!isSubmitted && (
             <button
               onClick={onBack}
-              className="w-full mt-6 flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors py-2"
+              className="w-full mt-4 flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors py-2"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-semibold">VOLVER AL INICIO DE SESIÓN</span>

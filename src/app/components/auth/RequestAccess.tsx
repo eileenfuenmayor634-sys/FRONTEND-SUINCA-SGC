@@ -12,7 +12,6 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
     phone: '',
     company: '',
     position: '',
-    reason: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,20 +26,18 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
     }, 1500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a2332] via-[#1e2836] to-[#0f1419] flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
 
-      {/* Header */}
       <div className="absolute top-0 left-0 right-0 p-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20">
@@ -53,27 +50,23 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="w-full max-w-2xl relative z-10 my-20">
-        {/* Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 tracking-wide">
+      <div className="w-full max-w-sm relative z-10 my-20">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 tracking-wide">
             SISTEMA DE MANTENIMIENTO INDUSTRIAL
           </h1>
         </div>
 
-        {/* Card */}
-        <div className="bg-[#1e2836]/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/10">
-          {/* Logo */}
+        <div className="bg-[#1e2836]/80 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-white/10">
           <div className="flex flex-col items-center mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center mb-4 border border-white/10 shadow-lg">
-              <Settings className="w-12 h-12 text-cyan-400" />
+            <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center mb-3 border border-white/10 shadow-lg">
+              <Settings className="w-10 h-10 text-cyan-400" />
             </div>
-            <h2 className="text-2xl font-bold text-white">SGM</h2>
+            <h2 className="text-xl font-bold text-white">SGM</h2>
             <p className="text-cyan-400 text-sm">Industrial</p>
           </div>
 
-          <h3 className="text-white text-center mb-6 font-semibold">SOLICITUD DE ACCESO</h3>
+          <h3 className="text-white text-center mb-4 font-semibold">SOLICITUD DE ACCESO</h3>
 
           {!isSubmitted ? (
             <>
@@ -81,9 +74,8 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                 Complete el formulario a continuación y nuestro equipo revisará su solicitud.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Nombre Completo */}
                   <div>
                     <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                       Nombre Completo *
@@ -97,12 +89,11 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                         onChange={handleChange}
                         placeholder="Juan Pérez"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                       Correo Electrónico *
@@ -116,12 +107,11 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                         onChange={handleChange}
                         placeholder="correo@empresa.com"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
 
-                  {/* Teléfono */}
                   <div>
                     <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                       Teléfono *
@@ -135,12 +125,11 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                         onChange={handleChange}
                         placeholder="+1 234 567 8900"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
 
-                  {/* Empresa */}
                   <div>
                     <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                       Empresa *
@@ -154,13 +143,12 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                         onChange={handleChange}
                         placeholder="Nombre de la Empresa"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                        className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Cargo */}
                 <div>
                   <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
                     Cargo / Posición *
@@ -174,31 +162,15 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                       onChange={handleChange}
                       placeholder="Gerente de Mantenimiento"
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+                      className="w-full pl-11 pr-4 py-1.5 bg-[#0f1419]/50 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
                     />
                   </div>
-                </div>
-
-                {/* Motivo */}
-                <div>
-                  <label className="block text-cyan-400 text-xs font-semibold mb-2 uppercase tracking-wider">
-                    Motivo de la Solicitud *
-                  </label>
-                  <textarea
-                    name="reason"
-                    value={formData.reason}
-                    onChange={handleChange}
-                    placeholder="Describa brevemente por qué necesita acceso al sistema..."
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3 bg-[#0f1419]/50 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all resize-none"
-                  />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3.5 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
                 >
                   {isLoading ? (
                     <>
@@ -222,19 +194,17 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
                 </svg>
               </div>
               <h4 className="text-white font-semibold text-lg">¡Solicitud Enviada!</h4>
-              <p className="text-gray-400 text-sm">
-                Su solicitud de acceso ha sido recibida correctamente.
-              </p>
+              <p className="text-gray-400 text-sm">Su solicitud de acceso ha sido recibida correctamente.</p>
               <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mt-4">
                 <p className="text-cyan-400 text-sm font-semibold mb-2">¿Qué sigue?</p>
                 <p className="text-gray-400 text-xs">
-                  Nuestro equipo revisará su solicitud en las próximas 24-48 horas. Recibirá un correo electrónico a <span className="text-cyan-400">{formData.email}</span> con las credenciales de acceso una vez aprobada.
+                  Nuestro equipo revisará su solicitud en las próximas 24-48 horas. Recibirá un correo electrónico a{' '}
+                  <span className="text-cyan-400">{formData.email}</span> con las credenciales de acceso una vez aprobada.
                 </p>
               </div>
             </div>
           )}
 
-          {/* Back Button */}
           <button
             onClick={onBack}
             className="w-full mt-6 flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors py-2"
@@ -247,3 +217,4 @@ export function RequestAccess({ onBack }: RequestAccessProps) {
     </div>
   );
 }
+
