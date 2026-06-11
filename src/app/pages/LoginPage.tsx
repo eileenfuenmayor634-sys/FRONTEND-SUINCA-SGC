@@ -12,8 +12,8 @@ export function LoginPage() {
 
   return (
     <Login
-      onLogin={() => {
-        window.location.href = '/';
+onLogin={() => {
+        window.location.href = '/dashboard';
       }}
     />
   );
